@@ -1,5 +1,5 @@
 export interface Element {
-  data: Data;
+  data: Data | null;
 }
 
 export interface Data {

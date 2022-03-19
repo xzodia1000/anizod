@@ -1,8 +1,10 @@
 <p>anime-list works!</p>
 
-<div *ngIf="loading">
-  <li *ngFor="let element of response.data.Page.media">
-    {{ element.title.romaji }}
-  </li>
+<div *ngIf="loading" class="list" infinite-scroll (scrolled)="ScrollDown()">
+  <ng-container *ngFor="let object of response">
+    <li *ngFor="let element of object.data?.Page?.media">
+      <img [src]="element.coverImage.large" />
+      {{ element.title.romaji }}
+    </li>
+  </ng-container>
 </div>
-
