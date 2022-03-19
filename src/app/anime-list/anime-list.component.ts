@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeListService } from './anime-list.service';
+import { Element, Data, Page, Media } from 'src/app/data';
 
 @Component({
   selector: 'app-anime-list',
@@ -7,17 +8,20 @@ import { AnimeListService } from './anime-list.service';
   styleUrls: ['./anime-list.component.scss'],
 })
 export class AnimeListComponent implements OnInit {
-  result: any;
+  response!: Element;
+  loading = false;
 
   constructor(private al_service: AnimeListService) {}
 
   ngOnInit(): void {
-    this.FetchResults();
+    this.FetchResults(1);
   }
 
-  FetchResults() {
-    this.al_service
-      .GetAnimeList()
-      .subscribe((response) => (this.result = response));
+  async FetchResults(_page: number): Promise<void> {
+    await this.al_service.GetAnimeList(_page).then((_response) => {
+      this.response = _response;
+
+      this.loading = true;
+    });
   }
 }
