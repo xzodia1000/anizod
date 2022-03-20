@@ -1,1 +1,12 @@
 <p>home works!</p>
+
+<input type="text" [formControl]="user_search" />
+
+<div *ngIf="loading" class="search-results">
+  <li *ngFor="let element of response.data?.anime?.results">
+    <a routerLink="/anime/{{ element.id }}">
+      <img [src]="element.coverImage.medium"
+    /></a>
+    {{ element.title.romaji }}
+  </li>
+</div>

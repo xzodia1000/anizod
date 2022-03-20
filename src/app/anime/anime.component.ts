@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { AnimeElement } from '../anime-data';
 import { AnimeService } from './anime.service';
 
@@ -15,7 +14,6 @@ export class AnimeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
     private service: AnimeService
   ) {}
 
