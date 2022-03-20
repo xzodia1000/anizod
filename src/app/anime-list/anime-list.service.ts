@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { lastValueFrom, Observable, throwError } from 'rxjs';
-import { Element } from 'src/app/data';
+import { ListElement } from 'src/app/list-data';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AnimeListService {
 
   constructor(private http: HttpClient) {}
 
-  async GetAnimeList(_page: number): Promise<Element> {
+  async GetAnimeList(_page: number): Promise<ListElement> {
     var query = {
       query: this._query,
       variables: {
@@ -27,7 +27,7 @@ export class AnimeListService {
       },
     };
 
-    const response = this.http.post<Element>(this.url, query);
+    const response = this.http.post<ListElement>(this.url, query);
 
     return await lastValueFrom(response);
   }

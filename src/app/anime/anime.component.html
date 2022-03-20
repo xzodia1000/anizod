@@ -1,0 +1,4 @@
+<div *ngIf="loading">
+  <h1>{{ response.data?.Media?.title?.romaji }}</h1>
+  <img [src]="response.data?.Media?.coverImage?.large" />
+</div>

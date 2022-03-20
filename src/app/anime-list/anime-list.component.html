@@ -3,7 +3,9 @@
 <div *ngIf="loading" class="list" infinite-scroll (scrolled)="ScrollDown()">
   <ng-container *ngFor="let object of response">
     <li *ngFor="let element of object.data?.Page?.media">
-      <img [src]="element.coverImage.large" />
+      <a routerLink="/anime/{{ element.id }}">
+        <img [src]="element.coverImage.large"
+      /></a>
       {{ element.title.romaji }}
     </li>
   </ng-container>

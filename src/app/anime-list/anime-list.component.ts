@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeListService } from './anime-list.service';
-import { Element } from 'src/app/data';
+import { ListElement } from 'src/app/list-data';
 
 @Component({
   selector: 'app-anime-list',
@@ -8,24 +8,24 @@ import { Element } from 'src/app/data';
   styleUrls: ['./anime-list.component.scss'],
 })
 export class AnimeListComponent implements OnInit {
-  response: Element[] = [];
-  loading = false;
+  response: ListElement[] = [];
+  loading: boolean = false;
 
   page: number = 1;
 
-  constructor(private al_service: AnimeListService) {}
+  constructor(private service: AnimeListService) {}
 
   ngOnInit(): void {
-    this.FetchResults(this.page);
+    this.FetchResults();
   }
 
   ScrollDown(): void {
     this.page++;
-    this.FetchResults(this.page);
+    this.FetchResults();
   }
 
-  async FetchResults(_page: number): Promise<void> {
-    await this.al_service.GetAnimeList(_page).then((_response) => {
+  FetchResults(): void {
+    this.service.GetAnimeList(this.page).then((_response) => {
       this.response.push(_response);
 
       this.loading = true;
