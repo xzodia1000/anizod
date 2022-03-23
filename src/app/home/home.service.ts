@@ -24,6 +24,6 @@ export class SearchService {
 
     const response = this.http.post<SearchElement>(this.url, query);
 
-    return await lastValueFrom(response);
+    return lastValueFrom(response);
   }
 }

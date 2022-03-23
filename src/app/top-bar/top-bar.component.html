@@ -1,7 +1,25 @@
-<a [routerLink]="['/']">
-  <h1>anizod</h1>
-</a>
+<div id="nav">
+  <a
+    id="toggle-icon"
+    data-bs-toggle="collapse"
+    aria-expanded="false"
+    aria-controls="collapse-1"
+    href="#collapse-1"
+  >
+    <div id="icon">
+      <svg id="box" width="100" height="100">
+        <ellipse cx="100" cy="0" rx="75" ry="70" fill="#b99fe8" />
+      </svg>
+      <i class="fa-solid fa-gears"></i>
+    </div>
+  </a>
 
-<a [routerLink]="['/anime-list']">
-  <h1>Anime List</h1>
-</a>
+  <div id="collapse-1" class="collapse">
+    <a [routerLink]="['/']">
+      <i class="fa-solid fa-house"></i>
+    </a>
+    <a [routerLink]="['/anime-list']">
+      <i class="fa-solid fa-list"></i>
+    </a>
+  </div>
+</div>

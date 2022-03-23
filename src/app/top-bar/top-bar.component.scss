@@ -1,0 +1,43 @@
+#nav,
+#toggle-icon {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#collapse-1 {
+  width: 35px;
+
+  position: fixed;
+  top: 90px;
+  right: 10px;
+}
+
+#collapse-1 > * {
+  display: block;
+  margin-bottom: 25px;
+}
+
+[class^="fa"] {
+  color: #b99fe8;
+  font-size: 25px;
+}
+
+#icon {
+  position: relative;
+}
+
+[class="fa-solid fa-gears"] {
+
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+
+  position: absolute;
+  z-index: 2;
+
+  right: 5px;
+  top: 8px;
+
+  color: #141414;
+  font-size: 40px;
+}
