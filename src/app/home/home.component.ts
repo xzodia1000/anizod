@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   response!: SearchElement;
 
+  empty: boolean = false;
   loading: boolean = false;
 
   constructor(private service: SearchService) {}
@@ -23,13 +24,18 @@ export class HomeComponent implements OnInit {
   }
 
   FetchSearch(_search: string) {
-    if (_search.length <= 3) {
-      console.log('give some 3 letters');
-    } else {
+    if (_search.length == 2 || _search.length == 1) {
+      this.empty = false;
+      this.loading = false;
+    } else if (_search.length > 2) {
+      this.empty = false;
+      this.loading = true;
       this.service.GetSearch(_search).then((_response) => {
         this.response = _response;
-        this.loading = true;
       });
+    } else {
+      this.empty = true;
+      this.loading = false;
     }
   }
 
