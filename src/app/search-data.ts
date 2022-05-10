@@ -40,6 +40,7 @@ export interface StartDate {
 }
 
 export interface Title {
+  english: null | string;
   romaji: string;
 }
 

@@ -1,4 +1,122 @@
-<div *ngIf="loading">
-  <h1>{{ response.data?.Media?.title?.romaji }}</h1>
-  <img [src]="response.data?.Media?.coverImage?.large" />
+<div class="logo">
+  <a routerLink="/"> <img src="assets/anizod.svg" alt="logo" /></a>
+</div>
+
+<div class="spinner">
+  <div *ngIf="!loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="loading" class="container content">
+  <div *ngIf="english != null">
+    <h1>{{ english }}</h1>
+    <h5>{{ response.data?.Media?.format }}</h5>
+  </div>
+  <div *ngIf="english == null">
+    <h1>{{ romaji }}</h1>
+    <h5>{{ response.data?.Media?.format }}</h5>
+  </div>
+  <div class="content__info">
+    <img
+      class="content__info--cover"
+      [src]="response.data?.Media?.coverImage?.large"
+    />
+    <div class="content__info--details">
+      <p *ngIf="start_month != -1">
+        <span class="info">Release Date: </span
+        >{{ response.data?.Media?.startDate?.day }} {{ months[start_month] }},
+        {{ response.data?.Media?.startDate?.year }}
+      </p>
+      <p *ngIf="end_month != -1 && episodes != 1">
+        <span class="info">End Date: </span
+        >{{ response.data?.Media?.endDate?.day }} {{ months[end_month] }},
+        {{ response.data?.Media?.endDate?.year }}
+      </p>
+      <p>
+        <span class="info">Status: </span>
+        {{ status }}
+      </p>
+      <p *ngIf="episodes != -1">
+        <span class="info">Episodes: </span>
+        {{ episodes }}
+      </p>
+      <div class="genres" *ngIf="genres?.length != 0">
+        <span class="info">Genres:&nbsp;</span>
+        <p *ngFor="let genre of genres">{{ genre }}&nbsp;&nbsp;</p>
+      </div>
+      <p>
+        <span class="info">Mean Score: </span>
+        {{
+          response.data?.Media?.meanScore != null
+            ? response.data?.Media?.meanScore + "%"
+            : "N/A"
+        }}
+      </p>
+      <p>
+        <span class="info">Average Score: </span>
+        {{
+          response.data?.Media?.averageScore != null
+            ? response.data?.Media?.averageScore + "%"
+            : "N/A"
+        }}
+      </p>
+      <p>
+        <span class="info">Popularity: </span>
+        {{ response.data?.Media?.popularity }}
+      </p>
+    </div>
+  </div>
+  <div class="content__info--details2">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne"
+            aria-expanded="false"
+            aria-controls="flush-collapseOne"
+          >
+            Description
+          </button>
+        </h2>
+        <div
+          id="flush-collapseOne"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div
+            class="accordion-body"
+            [innerHTML]="response.data?.Media?.description"
+          ></div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            Characters
+          </button>
+        </h2>
+        <div
+          id="flush-collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

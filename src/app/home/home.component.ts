@@ -23,19 +23,21 @@ export class HomeComponent implements OnInit {
     this.OnChange();
   }
 
-  FetchSearch(_search: string) {
+  FetchSearch(_search: string): void {
     if (_search.length == 2 || _search.length == 1) {
       this.empty = false;
       this.loading = false;
+      this.response.data = null;
     } else if (_search.length > 2) {
       this.empty = false;
-      this.loading = true;
       this.service.GetSearch(_search).then((_response) => {
         this.response = _response;
+        this.loading = true;
       });
     } else {
       this.empty = true;
       this.loading = false;
+      this.response.data = null;
     }
   }
 

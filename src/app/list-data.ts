@@ -88,6 +88,7 @@ export interface Node {
 }
 
 export interface Title {
+  english: string;
   romaji: string;
 }
 

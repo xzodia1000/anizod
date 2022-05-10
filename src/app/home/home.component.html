@@ -1,4 +1,4 @@
-<div class="home">
+<div class="container-fluid home">
   <div class="logo">
     <img src="assets/anizod.svg" alt="logo" />
   </div>
@@ -13,10 +13,15 @@
       <a routerLink="/anime/{{ element.id }}" style="text-decoration: none">
         <div class="search-content">
           <img [src]="element.coverImage.medium" id="cover" />
-          <p id="name">{{ element.title.romaji }}</p>
+          <p id="name">
+            {{
+              element.title.english != null
+                ? element.title.english
+                : element.title.romaji
+            }}
+          </p>
         </div>
       </a>
     </li>
   </div>
 </div>
-

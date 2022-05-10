@@ -1,10 +1,33 @@
-<div *ngIf="loading" class="list" infinite-scroll (scrolled)="ScrollDown()">
-  <ng-container *ngFor="let object of response">
-    <li *ngFor="let element of object.data?.Page?.media">
-      <a routerLink="/anime/{{ element.id }}">
-        <img [src]="element.coverImage.large"
-      /></a>
-      {{ element.title.romaji }}
-    </li>
-  </ng-container>
+<div class="logo">
+  <a routerLink="/"> <img src="assets/anizod.svg" alt="logo" /></a>
+</div>
+
+<div *ngIf="loading" class="container content">
+  <div class="content__title">
+    <h1 class="content__title--first">
+      Anime <span class="content__title--second">List</span>
+    </h1>
+  </div>
+  <div
+    class="content__list"
+    *ngFor="let object of response"
+    infinite-scroll
+    (scrolled)="ScrollDown()"
+  >
+    <div
+      class="card content__list--element"
+      *ngFor="let element of object.data?.Page?.media"
+    >
+      <a routerLink="/anime/{{ element.id }}" style="text-decoration: none">
+        <img class="card-img-top cover" [src]="element.coverImage.large" />
+        <p class="card-title name">
+          {{
+            element.title.english != null
+              ? element.title.english
+              : element.title.romaji
+          }}
+        </p></a
+      >
+    </div>
+  </div>
 </div>

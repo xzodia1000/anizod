@@ -12,13 +12,13 @@ export interface Media {
   coverImage: CoverImage;
   bannerImage: string;
   startDate: EndDateClass;
-  endDate: EndDateClass;
+  endDate: EndDateClass | null;
   description: string;
   season: string;
   seasonYear: number;
   type: Type;
   format: string;
-  status: Status;
+  status: string;
   episodes: number;
   duration: number;
   chapters: null;
@@ -61,7 +61,8 @@ export interface CharacterPreview {
 export interface CharacterPreviewEdge {
   id: number;
   role: string;
-  name: null;
+  name: string;
+  image: Image;
   voiceActors: VoiceActorClass[];
   node: VoiceActorClass;
 }
@@ -82,10 +83,11 @@ export enum Language {
 }
 
 export interface Name {
-  userPreferred: string;
+  full: string;
 }
 
 export interface CoverImage {
+  medium: string;
   extraLarge: string;
   large: string;
 }
