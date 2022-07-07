@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prod:build": "ng build --base-href \"https://xzodia1000.github.io/anizod/\""
   },
   "private": true,
   "dependencies": {
