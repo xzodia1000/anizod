@@ -20,7 +20,7 @@ jobs:
           npm install
       - name: Build App
         run: |
-          npm run build --prod --base-href https://xzodia1000.github.io/anizod/`
+          npm run build
       - name: Deploy App
         uses: s0/git-publish-subdir-action@develop
         env:
