@@ -1,43 +1,38 @@
-#nav,
-#toggle-icon {
-  position: fixed;
-  top: 0;
-  right: 0;
-
-  z-index: 100;
+#logo {
+  position: absolute;
 }
 
-#collapse-1 {
-  width: 35px;
+#logo > a > img {
+  margin-top: 5px;
+  margin-left: 5px;
+  height: 60px;
+  width: 60px;
+}
 
+#nav {
   position: fixed;
-  top: 90px;
+  display: inline-flex;
+  top: 10px;
   right: 10px;
-}
+  border-radius: 10px;
+  z-index: 10;
 
-#collapse-1 > * {
-  display: block;
-  margin-bottom: 25px;
+  background-color: #b99fe8;
 }
 
 [class^="fa"] {
-  color: #b99fe8;
-  font-size: 25px;
-}
-
-#icon {
-  position: relative;
-}
-
-[class="fa-solid fa-gears"] {
-  transform: scaleX(-1);
-
-  position: absolute;
-  z-index: 2;
-
-  right: 5px;
-  top: 8px;
-
   color: #141414;
-  font-size: 40px;
+  font-size: 25px;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+[class^="fa"]:hover {
+  color: #ebebeb;
+}
+
+@media only screen and (max-width: 600px) {
+  #logo {
+    display: none;
+  }
 }

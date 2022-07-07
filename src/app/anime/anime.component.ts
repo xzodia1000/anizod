@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AnimeElement, CharacterPreviewEdge } from '../anime-data';
+import { AnimeElement, CharacterPreviewEdge } from '../query-data/anime-data';
 import { AnimeService } from './anime.service';
 
 @Component({
@@ -37,7 +37,7 @@ export class AnimeComponent implements OnInit {
   english: string | undefined;
   romaji: string | undefined;
 
-  constructor(private route: ActivatedRoute, private service: AnimeService) {}
+  constructor(private route: ActivatedRoute, private service: AnimeService) { }
 
   ngOnInit(): void {
     this.FetchAnime();
@@ -49,7 +49,7 @@ export class AnimeComponent implements OnInit {
     this.service.GetAnime(id).then((_response) => {
       this.response = _response;
       this.Info();
-    });
+    }).catch(reason => console.log("fail"));
   }
 
   Info(): void {

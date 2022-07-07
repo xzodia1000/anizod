@@ -1,4 +1,4 @@
-<div class="container-fluid home">
+<div class="container home">
   <div class="logo">
     <img src="assets/anizod.svg" alt="logo" />
   </div>
@@ -8,6 +8,16 @@
     <input id="search-bar" type="text" [formControl]="user_search" />
   </div>
 
+  <div *ngIf="searching" class="search-results">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="empty" class="search-results">
+    <p id="empty">No results found!</p>
+  </div>
+
   <div *ngIf="loading" class="search-results">
     <li *ngFor="let element of response.data?.anime?.results">
       <a routerLink="/anime/{{ element.id }}" style="text-decoration: none">
@@ -15,13 +25,14 @@
           <img [src]="element.coverImage.medium" id="cover" />
           <p id="name">
             {{
-              element.title.english != null
-                ? element.title.english
-                : element.title.romaji
+            element.title.english != null
+            ? element.title.english
+            : element.title.romaji
             }}
           </p>
         </div>
       </a>
     </li>
   </div>
+
 </div>

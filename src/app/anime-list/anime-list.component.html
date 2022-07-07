@@ -1,33 +1,34 @@
-<div class="logo">
-  <a routerLink="/"> <img src="assets/anizod.svg" alt="logo" /></a>
+<div class="spinner">
+  <div *ngIf="!loading" class="spinner-border text-primary" id="spinner" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
 
 <div *ngIf="loading" class="container content">
+
   <div class="content__title">
     <h1 class="content__title--first">
       Anime <span class="content__title--second">List</span>
     </h1>
   </div>
-  <div
-    class="content__list"
-    *ngFor="let object of response"
-    infinite-scroll
-    (scrolled)="ScrollDown()"
-  >
-    <div
-      class="card content__list--element"
-      *ngFor="let element of object.data?.Page?.media"
-    >
+
+  <div class="content__list" infinite-scroll (scrolled)="ScrollDown()" *ngFor="let object of response">
+    <div class="card content__list--element" *ngFor="let element of object.data?.Page?.media">
       <a routerLink="/anime/{{ element.id }}" style="text-decoration: none">
         <img class="card-img-top cover" [src]="element.coverImage.large" />
         <p class="card-title name">
           {{
-            element.title.english != null
-              ? element.title.english
-              : element.title.romaji
+          element.title.english != null
+          ? element.title.english
+          : element.title.romaji
           }}
-        </p></a
-      >
+        </p>
+      </a>
     </div>
+
+  </div>
+
+  <div class="spinner_end spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
   </div>
 </div>

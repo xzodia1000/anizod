@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { lastValueFrom, Observable, throwError } from 'rxjs';
-import { ListElement } from 'src/app/list-data';
-import { map, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
+import { ListElement } from 'src/app/query-data/list-data';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +14,7 @@ export class AnimeListService {
   _sort = 'SCORE_DESC';
   _type = 'ANIME';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   async GetAnimeList(_page: number): Promise<ListElement> {
     var query = {
@@ -28,7 +27,6 @@ export class AnimeListService {
     };
 
     const response = this.http.post<ListElement>(this.url, query);
-
     return await lastValueFrom(response);
   }
 }

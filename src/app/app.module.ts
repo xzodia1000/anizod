@@ -11,7 +11,6 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { AnimeListComponent } from './anime-list/anime-list.component';
 import { HomeComponent } from './home/home.component';
 import { AnimeComponent } from './anime/anime.component';
-import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { AlertComponent } from './alert/alert.component';
     AnimeListComponent,
     HomeComponent,
     AnimeComponent,
-    AlertComponent,
   ],
   imports: [
     BrowserModule,
