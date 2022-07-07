@@ -27,7 +27,7 @@ import { AnimeComponent } from './anime/anime.component';
       { path: '', component: HomeComponent },
       { path: 'anime-list', component: AnimeListComponent },
       { path: 'anime/:id', component: AnimeComponent },
-    ]),
+    ], { useHash: true }),
     HttpClientModule,
     InfiniteScrollModule,
     ReactiveFormsModule,
@@ -35,4 +35,4 @@ import { AnimeComponent } from './anime/anime.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
