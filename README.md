@@ -8,7 +8,7 @@ The site can be accessed [here](https://xzodia1000.github.io/anizod/#/).
 
 ## Development server
 To run this project locally, have `npm` and `angular-cli` installed globally and then,
-- Clone this repo 
+- Clone the repo 
 - Run `npm install` 
 - Run `ng serve` for a dev server
 - Navigate to `http://localhost:4200/` 
