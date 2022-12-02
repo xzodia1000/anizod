@@ -1,6 +1,6 @@
 # anizod
 
-An angular app that can be used to browse anime and its related information with the help of [Anilist API](https://github.com/AniList/ApiV2-GraphQL-Docs). GraphQL is used to retrieve the anime entires.
+An angular app that can be used to browse anime and its related information with the help of [Anilist API](https://github.com/AniList/ApiV2-GraphQL-Docs). GraphQL is used to retrieve the anime entries.
 
 The site can be accessed [here](https://xzodia1000.github.io/anizod/#/).
 
